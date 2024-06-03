@@ -31,3 +31,48 @@ body {
     text-wrap: balance;
   }
 }
+
+.selected {
+  &::after {
+    position: relative;
+    border-radius: 2px;
+    padding: 1px;
+    width: 60px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    z-index: 10000;
+    color: #fff;
+    background: #000;
+    content: '✓';
+  }
+}
+
+.image-container .checkmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  background: url('/checkmark.png') no-repeat center center;
+  background-size: contain;
+  display: none;
+}
+
+.image-container.selected .checkmark {
+  display: block;
+}
+.webcam {
+  transform: translateX(-40vw);
+}
+.picture-taken{
+  opacity: 1;
+  width: auto;
+  height:  auto;
+  z-index: 1000;
+}
+.picture-taken-w{
+  padding: 0;
+  top:  29vh;
+  width: 40vw;
+  transform: translateX(0%);
+  z-index: 1000;
+}
