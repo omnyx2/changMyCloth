@@ -27,6 +27,7 @@ export async function POST(req) {
     };
     const res = await fetch('http://172.30.1.31:8080/fakeface/?gender_type=F', options);
     const repo = await res.json();
+    await fs.mkdir(`public/resultImages/${repo.requestId}`, { recursive: true }, (err) => {});
     const image = repo.images
     for(let i =0; i<image.length; i++){ 
         fs.writeFile(`public/resultImages/image_${i}.png`, image[i], {encoding: 'base64'}, function(err) {

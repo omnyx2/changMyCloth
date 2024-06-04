@@ -8,9 +8,18 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-radial": "#222",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      colors: {
+        skintone: '#DE9B72',
+        dark: '#222',
+      },
+      fontFamily: {
+        countach: ['Countach', 'sans-serif'],
+        'tilda-petite': ['Tilda Petite', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
     },
   },

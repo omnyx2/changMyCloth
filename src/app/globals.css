@@ -7,6 +7,11 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+@layer utilities {
+  .center-absolute {
+    @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,12 +23,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #222
 }
 
 @layer utilities {
@@ -43,6 +43,15 @@ body {
     color: #fff;
     background: #000;
     content: '✓';
+  }
+}
+
+@layer components {
+  .bottom-bar {
+    @apply fixed  bottom-0 w-full h-[5vh] bg-white m-0 my-0 p-2 gap-2 grid grid-cols-3 justify-around items-center;
+  }
+  .button {
+    @apply text-dark h-full py-2 px-4 bg-skintone rounded-lg text-lg shadow-sm;
   }
 }
 
@@ -73,6 +82,6 @@ body {
   padding: 0;
   top:  29vh;
   width: 40vw;
-  transform: translateX(0%);
+  transform: translateX(-100%);
   z-index: 1000;
 }

@@ -19,16 +19,15 @@ import React, { useRef, useCallback, useEffect, useState } from 'react';
   }
   return res.json();
 }
-const sendImagesList = async (list) => { 
+const sendImagesList = async (list, id) => { 
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({imageList: list}),
+    body: JSON.stringify({imageList: list, id: id}),
   };
   const res = await fetch('/api/requestClothStyles', options);
-  console.log(options)
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
@@ -76,9 +75,39 @@ function searchFiles(gender, season, style, files) {
   if(indexString.length < 2) return [];
    return files.filter(file => file.substr(0,3).includes(indexString));
 }
+const serverURL=""
+// async function getMiddleWorks(id){
+//   const url = "/api/getSequenceImage?id="+id;
+//   const res = await fetch(
+//     url,
+//     {
+//       method: "GET",
+//     }
+//   );
+//   console.log(res)
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data');
+//   }
+//   return res.json();
+// }
+
+function LoadingBeautiful({id}){
+
+  return (
+    <div>
+       <div>loading...</div>
+       {
+          imageLoadName === "" ?
+          <div>loading...</div>
+          :
+          <img src={"results/"+id+"/"+imageLoadName} alt="image" className="w-full"/>
+       }
+    </div>)
+}
 
 export default function Home() {
   const [imageList, setImageList] = useState([]);
+  const [id, setId] = useState("");
   const [choosenImageList, setChoosenImageList] = useState([]);
   const [weather, setWeather] = useState(-1); // ["spring", "summer", "fall", "winter"]
   const [gender, setGender] = useState(-1); // ["spring", "summer", "fall", "winter"]
@@ -88,6 +117,7 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
+    setId(params.get('id'))
     setWeather(params.get('weather'))
     setGender(params.get('gender'))
     setClothStyle(params.get('clothStyle'))
@@ -103,9 +133,10 @@ export default function Home() {
   }, [waiting]);
 
   const handleImageClick = (image) => {
+
     if(choosenImageList.length > 3) {
-      // alert("5개 이상 선택할 수 없습니다.")
-      return;
+      alert("5개 이상 선택할 수 없습니다.")
+      return ;
     }
     else if (choosenImageList.includes(image)) {
       // Remove image from selectedImages if already selected
@@ -117,12 +148,10 @@ export default function Home() {
   };
   const handleRequetClothStyle = async () => {
     setWaiting(true);
-    sendImagesList(choosenImageList).then((data) => {
-      if(data) {
-        router.push({
-          pathname: '/result',
-          query: { requestId: data.requestId }
-        })
+    sendImagesList(choosenImageList, id).then((data) => {
+      console.log(data)
+      if(data.data === 'done') {
+        router.push(`/result?id=${id}`)
       }
     }).catch((err) => {
       setWaiting(false);
@@ -131,29 +160,43 @@ export default function Home() {
     })
   }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex z-10 min-h-screen flex-col items-center justify-between p-24">
       {
         waiting ? 
         <div>loading...</div> : 
         (
-          <div>
-            <div className="p-10" onClick={() => handleRequetClothStyle()}>
-            <p>
-              원하는 코디 골라보기
-              </p>
-              <p>
-                최대 4개
-              </p>
-          </div>
-          <div className="w-100vw grid grid-cols-5">
+          <div className="w-100vw z-10 mt-80 grid grid-cols-5 grap border-solid border-red-600 border-4	">
             { 
               makeImageList(imageList,choosenImageList, handleImageClick)
             }
           </div>
-          </div>
         )
       }
-      
+        <div class="bottom-bar ">
+            <button class="button p-0" >
+              <Link href={`/filtering?id=${id}`}>
+                GoTo back page
+              </Link>
+            </button>
+            <button class="button p-0"> 가장 입어보고 싶은 패션을 골라주세요!</button>
+              <button class="button p-0" >
+ 
+                <div className="animate-spin"
+                onClick={handleRequetClothStyle}
+                style={{
+                  borderRadius: '5px',
+                  fontSize: '1em',
+                  justifyContent: "center",                
+                  margin: '5px',
+                  cursor: 'pointer',
+                  backgroundColor:  'rgb(222 155 114)',
+                  color: 'white' 
+                }}>
+                  Neeeeeeeexxxxxttttt!
+                </div>
+        
+              </button>
+          </div>
   </main>
   );
 }
