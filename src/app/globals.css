@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Major+Mono+Display&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,14 +13,40 @@
   .center-absolute {
     @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
+  .background-image {
+    width: 100%;
+    height: auto; /* Adjust according to your layout needs */
+    background-image: url('/background.jpg');
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+    filter: grayscale(100%); /* Apply the grayscale filter */
+  }
 }
-
+.pretty-background {
+  display: grid;
+  overflow: visible;
+  opacity: 0.3;
+  z-index: 1;
+  grid-template-columns: repeat(10, minmax(40px, 1fr));
+  justify-content: center;
+  grid-auto-rows: min-content;
+  grid-template-rows: repeat(9, min-content);
+  padding: 0px;
+  gap: 10;
+  border-radius: 0px 0px 0px 0px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+@font-face {
+  font-family: 'Paralines';
+  src: url('/fonts/Paralines-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
@@ -76,6 +104,7 @@ body {
   opacity: 1;
   width: auto;
   height:  auto;
+  margin-bottom: 0;
   z-index: 1000;
 }
 .picture-taken-w{

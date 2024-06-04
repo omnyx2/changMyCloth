@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link  from "next/link"
 import { useSearchParams } from "next/navigation";
 
+
+
 const tabs = (list, curElem, handleOnClick) => {
   
   return list.map((item, index) => {
@@ -20,7 +22,8 @@ const tabs = (list, curElem, handleOnClick) => {
             margin: '5px',
             cursor: 'pointer',
             backgroundColor: curElem === item ? 'rgb(222 155 114)' : 'white',
-            color: curElem === item ? 'white' : 'black'
+            color: curElem === item ? 'white' : 'black',
+            zIndex: 1
           }}
         >
         <p className="text-2xl font-serif">{item}</p>
