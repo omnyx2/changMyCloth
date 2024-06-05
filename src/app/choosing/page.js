@@ -199,7 +199,7 @@ export default function Home() {
 
       <div className="w-full h-full m-0 flex justify-center items-center flex-col">
       
-        <div className="absolute top-0 h-[25%] w-full h-auto justify-center items-center flex flex-col m-20">
+        <div className="sticky bg-black top-0 h-[25%] w-full h-auto justify-center items-center flex flex-col p-20">
           <div className="text-white font-mono ">
             You can choose Table Column to check easire your style!
           </div>
