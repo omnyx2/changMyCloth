@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
-
+import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -17,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="w-full h-full">
+        <Suspense fallback={<div>Loading...</div>}>
         {children}
+        </Suspense>
         </body>
     </html>
   );

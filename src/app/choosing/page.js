@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation";
 import { send } from "process";
 import { useRouter } from 'next/navigation'
+import { Suspense } from "react"
 
 import React, { useRef, useCallback, useEffect, useState } from 'react';
  async function getImageList() {
@@ -183,7 +184,7 @@ export default function Home() {
     })
   }
   return (
-    <main className="flex min-h-screen w-full flex-row bg-black items-center justify-between p-0">
+     <main className="flex min-h-screen w-full flex-row bg-black items-center justify-between p-0">
       
       <div className="absolute w-34 h-34  top-0 left-4 p-16">
         <button class="rounded-full m-0 p-0 w-full h-full font-extralight font-bangers font-extrathin text-[3rem] text-white flex justify-center items-center" >
@@ -232,5 +233,6 @@ export default function Home() {
        
         </div>
   </main>
-  );
+   );
+
 }

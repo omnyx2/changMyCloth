@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link  from "next/link"
 import { useSearchParams } from "next/navigation";
 import fileNameIndex from "./fileNameLogic";
-
-const Wave = ({children}) => {
+ const Wave = ({children}) => {
   return (
     <div className="w-full min-h-screen px-6 pt-5 pb-3 text-blue-400 flex flex-col bg-black">
       <div className="block w-full h-[25%]">
@@ -86,7 +85,7 @@ export default function Home() {
   },
   [gender, weather, clothStyle])
   return (
-    <main className="flex pt-20 min-h-screen justify-center items-center">
+     <main className="flex pt-20 min-h-screen justify-center items-center">
     <Wave>
       {
         ImageRecommandationIllution(initImgIdx)
@@ -134,5 +133,5 @@ export default function Home() {
       </Wave>
       
   </main>
-  );
+   );
 }

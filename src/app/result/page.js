@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import Image from "next/image";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link"
+import { Suspense } from "react"
+
 
 const getResultImagesList = async (id) => { 
   const options = {
@@ -30,7 +32,7 @@ export default function Home() {
     
   },[id])
   return (
-    
+ 
     <main className="flex min-h-screen grid grid-cols-2 items-center justify-between p-24">
       {/* <Image src="/public/" alt="logo" width={100} height={100} /> */}
       {imageList.map((image, index) => {
@@ -45,5 +47,5 @@ export default function Home() {
         )
       })}
     </main>
-  );
+   );
 }
