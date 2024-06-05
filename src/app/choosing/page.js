@@ -93,7 +93,8 @@ function searchFiles(gender, season, style, files) {
 
   console.log("se", indexString)
   if(indexString.length < 2) return [];
-   return files.filter(file => file.substr(0,3).includes(indexString));
+  console.log(files.filter(file => file.substr(0,3).includes(indexString)))
+  return files.filter(file => file.substr(0,3).includes(indexString));
 }
 const serverURL=""
 // async function getMiddleWorks(id){
@@ -183,21 +184,15 @@ export default function Home() {
   }
   return (
      <main className="flex min-h-screen w-full flex-row bg-black items-center justify-between p-0">
-      
-      <div className="absolute w-34 h-34  top-0 left-4 p-16">
-        <button class="rounded-full m-0 p-0 w-full h-full font-extralight font-bangers font-extrathin text-[3rem] text-white flex justify-center items-center" >
-        <Link href={`/filtering?id=${id}`} className="w-full z-10 h-full">
-                  X
-                  </Link>
-        </button>
-      </div>
-    
-     
-        
-
-      <div className="w-full h-full m-0 flex justify-center items-center flex-col">
-      
+      <div className="w-full h-[100vh] m-0 flex items-center flex-col">
         <div className="sticky bg-black top-0 h-[25%] w-full h-auto justify-center items-center flex flex-col p-20">
+        <div className="absolute w-34 h-34  top-0 left-4 p-16">
+            <button class="rounded-full m-0 p-0 w-full h-full font-extralight font-bangers font-extrathin text-[3rem] text-white flex justify-center items-center" >
+            <Link href={`/filtering?id=${id}`} className="w-full z-10 h-full">
+                      X
+                      </Link>
+            </button>
+          </div>
           <div className="text-white font-mono ">
             You can choose Table Column to check easire your style!
           </div>
@@ -217,7 +212,7 @@ export default function Home() {
         waiting ? 
         <div>loading...</div> : 
         (
-          <div className={`mt-[25em] grid grap border-solid transition-all bg-black duration-300 ease-in-out`}
+          <div className={`mt-[10em] grid grap border-solid transition-all bg-black duration-300 ease-in-out`}
             style={{
               gridTemplateColumns:`repeat( ${choosenGridCol}, 1fr)`
             }}
