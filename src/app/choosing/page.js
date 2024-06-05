@@ -87,9 +87,7 @@ function searchFiles(gender, season, style, files) {
   if (season === 'spring') indexString += '1';
   if (season === 'summer') indexString += '2' ;
   if (season === 'fall') indexString += '3' 
-  if (season === 'winder') indexString += '4'; 
-  if (season === 'fall') indexString += '3' 
-  if (season === 'winder') indexString += '4'; 
+  if (season === 'winter') indexString += '4'; 
   if (style === 'formal') indexString += '1';
   if (style === 'casual') indexString += '2';
 
