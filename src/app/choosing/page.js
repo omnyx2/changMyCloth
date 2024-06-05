@@ -36,7 +36,7 @@ const sendImagesList = async (list, id) => {
   return res.json();
 }
 
-const makeImageList = (imageList, selectedImages, handleImageClick) => {
+const makeImageList = (choosenGridCol, imageList, selectedImages, handleImageClick) => {
   if (!imageList) {
     return <div>loading...</div>
   }
@@ -50,7 +50,7 @@ const makeImageList = (imageList, selectedImages, handleImageClick) => {
         <Image
           src={"/presets/" + image}
           alt="image"
-          width={100}
+          width={600/choosenGridCol}
           height={100}
         />
       </div>
@@ -219,13 +219,13 @@ export default function Home() {
         waiting ? 
         <div>loading...</div> : 
         (
-          <div className={`w-100vw mt-[25em] grid grap border-solid transition-all duration-300 ease-in-out`}
+          <div className={`mt-[25em] grid grap border-solid transition-all bg-black duration-300 ease-in-out`}
             style={{
               gridTemplateColumns:`repeat( ${choosenGridCol}, 1fr)`
             }}
             >
             { 
-              makeImageList(imageList,choosenImageList, handleImageClick)
+              makeImageList(choosenGridCol,imageList,choosenImageList, handleImageClick)
             }
           </div>
         )
