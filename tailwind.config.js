@@ -37,11 +37,21 @@ module.exports = {
         "0%": { margin: "0px" },
         "50%": { margin: "100px" },
       },
+      blinkUP: {
+        "0%, 100%": { opacity: 1 },
+        "50%": { opacity: 0 },
+      },
+      blickDOWN: {
+        "0%, 100%": { opacity: 0 },
+        "50%": { opacity: 1 },
+      },
     },
     animation: {
       wiggle: "wiggle 1s ease-in-out infinite",
       marginDown: "marginDown 2s ease-in-out",
       marginUp: "marginUp 2s ease-in-out",
+      blinkUP: "blinkUP 5.8s ease-out infinite",
+      blinkDOWN: "blickDOWN 5.8s ease-out infinite",
     },
   },
   plugins: [],

@@ -57,6 +57,27 @@ const makeImageList = (imageList, selectedImages, handleImageClick) => {
   })
 }
 
+const ChooseGridColButton = ({i, gridColNum, setGridColNum}) => {
+  return (
+    <div className="flex flex-row rouneded-full w-10 h-10 m-1">
+      <button
+        onClick={() => setGridColNum(i)}
+        className="button"
+        style={{
+            backgroundColor: gridColNum === i ? 'white' : 'black',
+            color: gridColNum === i ? 'black' : 'white',
+          }}
+      >
+        {i}
+      </button>
+    </div>
+  )
+}
+const ChooseGridColTabs = ({choosenGridCol, setChoosenGridCol}) => {
+  const tabs = [1,2,3,4,5,6].map((i, idx)=> <ChooseGridColButton i={i} key={i} gridColNum={choosenGridCol} setGridColNum={setChoosenGridCol}/>)
+  return tabs;
+}
+
 function searchFiles(gender, season, style, files) {
   let indexString = "";
   console.log(gender, season, style)
@@ -92,7 +113,6 @@ const serverURL=""
 // }
 
 function LoadingBeautiful({id}){
-
   return (
     <div>
        <div>loading...</div>
@@ -106,6 +126,7 @@ function LoadingBeautiful({id}){
 }
 
 export default function Home() {
+  const [choosenGridCol, setChoosenGridCol] = useState(5);
   const [imageList, setImageList] = useState([]);
   const [id, setId] = useState("");
   const [choosenImageList, setChoosenImageList] = useState([]);
@@ -131,7 +152,9 @@ export default function Home() {
   useEffect(() => {
    
   }, [waiting]);
-
+  useEffect(()=>{
+    console.log(choosenGridCol)
+  },[choosenGridCol])
   const handleImageClick = (image) => {
 
     if(choosenImageList.length > 3) {
@@ -160,43 +183,54 @@ export default function Home() {
     })
   }
   return (
-    <main className="flex z-10 min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen w-full flex-row bg-black items-center justify-between p-0">
+      
+      <div className="absolute w-34 h-34  top-0 left-4 p-16">
+        <button class="rounded-full m-0 p-0 w-full h-full font-extralight font-bangers font-extrathin text-[3rem] text-white flex justify-center items-center" >
+        <Link href={`/filtering?id=${id}`} className="w-full z-10 h-full">
+                  X
+                  </Link>
+        </button>
+      </div>
+    
+     
+        
+
+      <div className="w-full h-full m-0 flex justify-center items-center flex-col">
+      
+        <div className="absolute top-0 h-[25%] w-full h-auto justify-center items-center flex flex-col m-20">
+          <div className="text-white font-mono ">
+            You can choose Table Column to check easire your style!
+          </div>
+          <div className="text-white font-mono mb-10">
+          Where all NEW FW In ourstore with AI !
+          </div>
+          <div className="animate-blur justify-center flex flex-row mb-4">
+          <ChooseGridColTabs choosenGridCol={choosenGridCol} setChoosenGridCol={setChoosenGridCol}/>
+          </div>  
+          <div className="animate-blur font-mono text-xl w-[20rem] font-bold rounded-full h-10 flex items-center justify-center  bg-orange-500 opacity-80 text-black m-10"
+                onClick={handleRequetClothStyle}>
+                Make me with New FW!
+           </div>
+        </div>
+
       {
         waiting ? 
         <div>loading...</div> : 
         (
-          <div className="w-100vw z-10 mt-80 grid grid-cols-5 grap border-solid border-red-600 border-4	">
+          <div className={`w-100vw mt-[25em] grid grap border-solid transition-all duration-300 ease-in-out`}
+            style={{
+              gridTemplateColumns:`repeat( ${choosenGridCol}, 1fr)`
+            }}
+            >
             { 
               makeImageList(imageList,choosenImageList, handleImageClick)
             }
           </div>
         )
-      }
-        <div class="bottom-bar ">
-            <button class="button p-0" >
-              <Link href={`/filtering?id=${id}`}>
-                GoTo back page
-              </Link>
-            </button>
-            <button class="button p-0"> 가장 입어보고 싶은 패션을 골라주세요!</button>
-              <button class="button p-0" >
- 
-                <div className="animate-spin"
-                onClick={handleRequetClothStyle}
-                style={{
-                  borderRadius: '5px',
-                  fontSize: '1em',
-                  justifyContent: "center",                
-                  margin: '5px',
-                  cursor: 'pointer',
-                  backgroundColor:  'rgb(222 155 114)',
-                  color: 'white' 
-                }}>
-                  Neeeeeeeexxxxxttttt!
-                </div>
-        
-              </button>
-          </div>
+      } 
+       
+        </div>
   </main>
   );
 }

@@ -21,6 +21,13 @@
     background-position: center; /* Center the image */
     filter: grayscale(100%); /* Apply the grayscale filter */
   }
+  .background-image-pure {
+    width: 100%;
+    height: auto; /* Adjust according to your layout needs */
+    background-image: url('/background.jpg');
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+  }
 }
 .pretty-background {
   display: grid;
