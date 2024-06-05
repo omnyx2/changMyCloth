@@ -7,7 +7,7 @@ const Wave = ({children}) => {
       <div className="block w-full h-[25%]">
       <div className="relative t-0 w-full h-[25%]">
         <div className="absoulte text-xl font-tilda-petite w-full h-[1em] t-0 text-center pb-0 font-bold">
-          Revolutionize Your Style Revolutionize Your Style Revolutionize Your Style RevolutionizE E E E E
+          Revolutionize Your Style Revolutionize Only for IPAD VERTICAL Your Style RevolutionizE E E E E
         </div>
         <div className="absoulte mt-0 pt-0 pb-0 mb-0 tracking-tight p-0 t-0 font-paralines letter-2 text-[20rem]  text-center">
           FASHAI
