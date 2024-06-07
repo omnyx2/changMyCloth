@@ -89,6 +89,22 @@ body {
     @apply text-dark h-full py-2 px-4 bg-skintone rounded-lg text-lg shadow-sm;
   }
 }
+.back-result {
+  width: 100%;
+  height: auto; /* Adjust according to your layout needs */
+  background: url('/background.jpg') 0 0 repeat;
+ 
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  filter: grayscale(100%);
+}
+
+.back-result .bg-gradient-to-t {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5), transparent);
+  pointer-events: none; /* Ensure the overlay doesn't interfere with interaction */
+}
 
 .image-container .checkmark {
   position: absolute;
