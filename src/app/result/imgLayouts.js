@@ -4,13 +4,13 @@ import useResizeObserver from './hooks';
 
 
 
-const imageList = [
-    'person/1717568942502.jpg',
-    'presets/11101.jpg',
-    'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
-    'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
-    'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
-]
+// const imageList = [
+//     'person/1717568942502.jpg',
+//     'presets/11101.jpg',
+//     'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
+//     'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
+//     'https://images.unsplash.com/photo-1612838320302-3b3b3b3b3b3b',
+// ]
 
 const ImageWithTextBorders = ({ src, alt, textTop, textRight, textBottom, textLeft }) => {
     return (
@@ -36,7 +36,7 @@ const ImageBox = ({ src, alt, deco }) => {
     );
   };
 
-export default function Home({_imageList}) {
+export default function Home({imageList}) {
     
     const deco1= {
         top: 'Wear AI Fashion',

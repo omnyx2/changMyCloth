@@ -16,20 +16,20 @@ const getResultImagesList = async (id) => {
   return res.json();
 }
 export default function Home() {
-  // const [id, setId] = useState("")
-  // const [imageList, setImageList] = useState([]);
-  // const params = useSearchParams();
-  // useEffect(()=>{
-  //   setId(params.get('id'))
-  // }, [])
+  const [id, setId] = useState("")
+  const [imageList, setImageList] = useState([]);
+  const params = useSearchParams();
+  useEffect(()=>{
+    setId(params.get('id'))
+  }, [])
 
-  // useEffect(() => {
-  //   if(id === "") return;
-  //   getResultImagesList(id).then((data) => {
-  //     setImageList([...data.imageList]);
-  //   });
+  useEffect(() => {
+    if(id === "") return;
+    getResultImagesList(id).then((data) => {
+      setImageList([...data.imageList]);
+    });
     
-  // },[id])
+  },[id])
   return (
  
     <main className="flex flex-col w-[100vw] min-h-screen items-center justify-between p-20  bg-black">
@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         <div className="pt-20">
         <div className="p-4 border-4 border-orange-500 bg-black">
-        <ImageLayouts imageList={[]}/>
+        <ImageLayouts imageList={imageList}/>
         </div>
         </div>
    
