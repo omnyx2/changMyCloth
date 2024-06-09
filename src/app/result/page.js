@@ -29,13 +29,13 @@ export default function Home() {
     getResultImagesList(id).then((data) => {
       setImageList([...data.imageList]);
     }).catch((err) => {
-      const dummyImages = [
+      //dummy
+      setImageList([
         'test_result/1.jpg',
         'test_result/2.jpg',
         'test_result/3.jpg',
         'test_result/4.jpg',
-      ]
-      setImageList(dummyImages)
+      ])
       console.log("failed to image load dummy on", err);
     })
   },[id])
@@ -44,8 +44,8 @@ export default function Home() {
     <main className="flex flex-col w-[100vw] min-h-screen items-center justify-between p-20  bg-black">
       {
         imageList.length === 0 ? (
-          <div className="absolute w-[100vw] h-[100vh] flex items-center justify-center bg-black">
-            <div className="text-white text-2xl animate-pulse opacity-80">
+          <div className="absolute w-[100vw] h-[100vh] flex items-center justify-center  opacity-100 bg-black">
+            <div className="text-white text-2xl animate-pulse">
               On Loading...
             </div>
           </div>

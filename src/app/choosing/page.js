@@ -181,7 +181,7 @@ export default function Home() {
       setWaiting(false);
       console.log(err)
       alert("Now it's dummmy mode for test! Check when demo is opened!");
-      router.push(`/result?id=${id}`)
+      router.push(`/result?id=dummy`)
 
     })
   }
