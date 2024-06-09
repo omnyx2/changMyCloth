@@ -18,12 +18,7 @@ const getResultImagesList = async (id) => {
 export default function Home() {
   const [id, setId] = useState("")
   const [imageList, setImageList] = useState([]);
-  const dummyImages = [
-    'test_result/1.jpg',
-    'test_result/2.jpg',
-    'test_result/3.jpg',
-    'test_result/4.jpg',
-  ]
+  
   const params = useSearchParams();
   useEffect(()=>{
     setId(params.get('id'))
@@ -34,10 +29,15 @@ export default function Home() {
     getResultImagesList(id).then((data) => {
       setImageList([...data.imageList]);
     }).catch((err) => {
+      const dummyImages = [
+        'test_result/1.jpg',
+        'test_result/2.jpg',
+        'test_result/3.jpg',
+        'test_result/4.jpg',
+      ]
       setImageList(dummyImages)
       console.log("failed to image load dummy on", err);
     })
-    
   },[id])
   return (
  
