@@ -213,7 +213,7 @@ export default function Home() {
 
       {
         waiting ? 
-        <div>loading...</div> : 
+        <div className={"animate-wiggle text-2xl font-mono text-white"}>AI is helping change cloth...</div> : 
         (
           <div className={`mt-[10em] grid grap border-solid transition-all bg-black duration-300 ease-in-out`}
             style={{
