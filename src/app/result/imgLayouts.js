@@ -37,7 +37,6 @@ const ImageBox = ({ src, alt, deco }) => {
   };
 
 export default function Home({imageList}) {
-    
     const deco1= {
         top: 'Wear AI Fashion',
         right: '',
@@ -65,10 +64,10 @@ export default function Home({imageList}) {
     return (
     <div className="relative w-full h-full ">
         <div className={`grid grid-cols-2 gap-4 p-8 grid-flow-cols justify-center items-center bg-white`}>
-            <ImageBox src={imageList[1]} alt="Sample Image" deco={deco1} />
+            <ImageBox src={imageList[0]} alt="Sample Image" deco={deco1} />
             <ImageBox src={imageList[1]} alt="Sample Image" deco={deco2} />
-            <ImageBox src={imageList[1]} alt="Sample Image" deco={deco3} />
-            <ImageBox src={imageList[1]} alt="Sample Image" deco={deco4} />  
+            <ImageBox src={imageList[2]} alt="Sample Image" deco={deco3} />
+            <ImageBox src={imageList[3]} alt="Sample Image" deco={deco4} />  
         </div>
     </div>
     );

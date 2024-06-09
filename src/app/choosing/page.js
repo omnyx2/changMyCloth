@@ -176,10 +176,13 @@ export default function Home() {
       if(data.data === 'done') {
         router.push(`/result?id=${id}`)
       }
+      router.push(`/result?id=${id}`)
     }).catch((err) => {
       setWaiting(false);
       console.log(err)
-      alert("요청 실패");
+      alert("Now it's dummmy mode for test! Check when demo is opened!");
+      router.push(`/result?id=${id}`)
+
     })
   }
   return (

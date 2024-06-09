@@ -29,6 +29,10 @@ module.exports = {
         "0%, 100%": { transform: "rotate(-3deg)" },
         "50%": { transform: "rotate(3deg)" },
       },
+      comeUp: {
+        "0%": { transform: "translateY(200px)" },
+        "50%": { transform: "translateY(0px)" },
+      },
       marginDown: {
         "0%": { margin: "100px" },
         "50%": { margin: "0px" },
@@ -45,6 +49,10 @@ module.exports = {
         "0%, 100%": { opacity: 0 },
         "50%": { opacity: 1 },
       },
+      fadeIn: {
+        "0%": { opacity: 0 },
+        "100%": { opacity: 1 },
+      },
     },
     animation: {
       wiggle: "wiggle 1s ease-in-out infinite",
@@ -52,6 +60,8 @@ module.exports = {
       marginUp: "marginUp 2s ease-in-out",
       blinkUP: "blinkUP 5.8s ease-in-out infinite",
       blinkDOWN: "blickDOWN 5.8s ease-in-out infinite",
+      comeUp: "comeUp 1s ease-in-out",
+      fadeIn: "fadeIn 1s ease-in-out",
     },
   },
   plugins: [],
