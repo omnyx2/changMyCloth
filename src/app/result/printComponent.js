@@ -6,12 +6,15 @@ const PrintWrapper = ({ children }) => {
     const componentRef = useRef();
   
     return (
-      <div className='relative w-full h-full text-white '>
+      <div className='text-white w-full h-full '>
+        <div className="relative w-0 h-0">
         <ReactToPrint
-          trigger={() => <button className='absolute w-40 h-10 right-0 top-0 translate-y-[-130%] bg-white text-black font-extrabold font-countach rounded-full'>PrintOut!</button>}
+          trigger={() => <button className='w-40 h-10 translate-y-[-200%] translate-x-[60vw] bg-white text-black font-extrabold font-countach rounded-full'>PrintOut!</button>}
           content={() => componentRef.current}
         />
-        <div  className='relative w-full h-full ' ref={componentRef}>
+        </div>
+        
+        <div  className='w-full h-full' ref={componentRef}>
           {children}
         </div>
       </div>

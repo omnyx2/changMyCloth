@@ -64,13 +64,17 @@ export default function Home() {
             </p>
             </div>
         </div>
-        <PrintWrapper>
-          <div className="block pt-0">
-              <div className="p-4 border-4 border-orange-500 bg-black animate-fadeIn">
-                <ImageLayouts imageList={imageList}/>
-              </div>
-          </div>
-        </PrintWrapper>
+        {/* A4를 안에 넣는 것이므로 종이의 세로가 더길어 h가 기준이 되어야한다. */}
+        <div className="bg-white a4-ratio-75vh">
+          <PrintWrapper>
+            <div className="pt-0 w-full h-full">
+                <div className="p-4 border-4 w-full h-full border-orange-500 bg-black animate-fadeIn">
+                  <ImageLayouts imageList={imageList}/>
+                </div>
+            </div>
+          </PrintWrapper>
+        </div>
+
         </>
 
       }

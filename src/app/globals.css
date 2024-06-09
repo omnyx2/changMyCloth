@@ -89,6 +89,13 @@ body {
     @apply text-dark h-full py-2 px-4 bg-skintone rounded-lg text-lg shadow-sm;
   }
 }
+
+.a4-ratio-75vh {
+  aspect-ratio: 1 / 1.414 ;
+  height: 75vh;
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
 .back-result {
   width: 100%;
   height: auto; /* Adjust according to your layout needs */

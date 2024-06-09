@@ -1,7 +1,7 @@
 'use clinent'
 import React, { useRef } from 'react';
 import useResizeObserver from './hooks';
-
+import Image from 'next/image';
 
 
 // const imageList = [
@@ -13,13 +13,18 @@ import useResizeObserver from './hooks';
 // ]
 
 const ImageWithTextBorders = ({ src, alt, textTop, textRight, textBottom, textLeft }) => {
+    const containerRef = useRef(null);
+    const { width, height } = useResizeObserver(containerRef);
+    const isWide = width > height;
     return (
-      <div className="relative inline-block text-[0.8rem] font-bold text-black">
-        <img src={src} alt={alt} className="block " />
-        <span className="absolute top-0 left-1/2 transform -translate-x-1/2 translate-y-[-1.8em] bg-transparent px-1">{textTop} </span>
-        <span className={`absolute  right-0 transform translate-x-[1em] origin-right bg-transparent px-1 rotate-90`}>{textRight}  </span>
-        <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2  translate-y-7 bg-transparent px-1">{textBottom}</span>
-        <span className={`absolute left-0 transform translate-x-[-1.2em] bg-transparent origin-left  px-1 rotate-[270deg]`}>{textLeft}</span>
+      <div className="relative w-full h-full text-[0.8rem] font-bold text-black">
+        <Image src={"/"+src} alt={alt} fill={true} style={{
+            objectFit: 'cover', // cover, contain, none
+          }} />
+        <span className="absolute w-full top-0 left-0 text-center translate-y-[-1.8em] bg-transparent px-1">{textTop} </span>
+        <span className={`absolute  right-0 bottom-0 translate-x-[1em] origin-right bg-transparent px-1 rotate-90`}>{textRight}  </span>
+        <span className="absolute w-full bottom-0 left-0 text-center  translate-y-7 bg-transparent px-1">{textBottom}</span>
+        <span className={`absolute left-0 bottom-0 translate-x-[-1.2em] bg-transparent origin-left  px-1 rotate-[270deg]`}>{textLeft}</span>
       </div>
     );
 };
@@ -28,8 +33,8 @@ const ImageBox = ({ src, alt, deco }) => {
     const { width, height } = useResizeObserver(containerRef);
     const isWide = width > height;
     return (
-        <div className="relative bg-black ">
-            <div  className={`inset-0 ${isWide ? 'w-full h-auto' : 'w-auto h-full'} object-cover`}>
+        <div className={`relative top-0 left-0  w-full h-full bg-black ${isWide ? 'w-full h-auto' : 'w-auto h-full'} `}>
+            <div  className={`relative inset-0 w-full h-full object-cover top-0 left-0`}>
                 <ImageWithTextBorders src={src} alt={alt} textTop={deco.top} textRight={deco.right} textBottom={deco.bottom} textLeft={deco.left} />
             </div>
       </div>
@@ -37,6 +42,9 @@ const ImageBox = ({ src, alt, deco }) => {
   };
 
 export default function Home({imageList}) {
+    const containerRef = useRef(null);
+    const { width, height } = useResizeObserver(containerRef);
+    const isWide = width > height;
     const deco1= {
         top: 'Wear AI Fashion',
         right: '',
@@ -62,8 +70,8 @@ export default function Home({imageList}) {
         left: ' ',
     }
     return (
-    <div className="relative w-full h-full ">
-        <div className={`grid grid-cols-2 gap-4 p-8 grid-flow-cols justify-center items-center bg-white`}>
+    <div className={`relative w-full h-full` }>
+        <div className={`relative w-full h-full grid grid-cols-2 gap-4 p-8 grid-flow-cols grid-rows-2 justify-center items-center bg-white`}>
             <ImageBox src={imageList[0]} alt="Sample Image" deco={deco1} />
             <ImageBox src={imageList[1]} alt="Sample Image" deco={deco2} />
             <ImageBox src={imageList[2]} alt="Sample Image" deco={deco3} />
