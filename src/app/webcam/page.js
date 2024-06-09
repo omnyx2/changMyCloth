@@ -152,7 +152,7 @@ export default function Home() {
                         pathname: "/filtering",
                         query: { id: imageId}
                         }}>
-                          Conform!
+                          Confirm!
                         </Link>
                     </button>
                 </div>
