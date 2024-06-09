@@ -153,7 +153,7 @@ export default function Home() {
                         query: { id: imageId}
                         }}>
                           Confirm!
-                        </Link>
+                        </Link> 
                     </button>
                 </div>
               }
