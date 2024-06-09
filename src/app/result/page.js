@@ -42,10 +42,10 @@ export default function Home() {
   },[id])
   return (
  
-    <main className="flex flex-col w-[100vw] min-h-screen items-center  p-20  bg-black">
+    <main className="flex flex-col w-[100vw] min-h-screen items-center justify-center  p-20  bg-black">
       {
         imageList.length === 0 ? (
-          <div className="absolute w-[100vw] h-[100vh] flex items-center justify-center  opacity-100 bg-black">
+          <div className="absolute w-[calc(100vw-5em]] h-[100vh] flex items-center justify-center  opacity-100 bg-black">
             <div className="text-white text-2xl animate-pulse">
               On Loading...
             </div>
@@ -54,7 +54,7 @@ export default function Home() {
         :<>
         <img src="background.jpg" className="absolute w-[100vw] bottom-0 h-[100vw] grayscale bg-gradient-to-t object-cover-fit opacity-50 animate-comeUp" alt="background"/>
         <div className="block w-full h-20 flex-col font-countach items-center justify-center">
-            <div className="absolute w-[100vw] top-4 translate-x-[calc(8vw)] font-extrabold font-sans text-orange-500 text-[2rem] z-100">
+            <div className="absolute w-[calc(100vw-5rem]] top-4 translate-x-[calc(8vw)] font-extrabold font-sans text-orange-500 text-[2rem] z-100">
               Choose Options for Recommandation, Please!
               <p className="text-lg pt-2">
                 4/4 step
@@ -65,9 +65,9 @@ export default function Home() {
             </div>
         </div>
         {/* A4를 안에 넣는 것이므로 종이의 세로가 더길어 h가 기준이 되어야한다. */}
-        <div className="bg-white a4-ratio-75vh">
+        <div className="bg-transparent a4-ratio-75vh">
           <PrintWrapper>
-            <div className="pt-0 w-full h-full">
+            <div className="pt-0 a4-ratio-75vh">
                 <div className="p-4 border-4 w-full h-full border-orange-500 bg-black animate-fadeIn">
                   <ImageLayouts imageList={imageList}/>
                 </div>

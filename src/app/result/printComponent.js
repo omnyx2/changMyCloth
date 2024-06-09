@@ -4,7 +4,7 @@ import ReactToPrint from 'react-to-print';
 
 const PrintWrapper = ({ children }) => {
     const componentRef = useRef();
-  
+
     return (
       <div className='text-white w-full h-full '>
         <div className="relative w-0 h-0">
@@ -14,7 +14,7 @@ const PrintWrapper = ({ children }) => {
         />
         </div>
         
-        <div  className='w-full h-full' ref={componentRef}>
+        <div className='w-full h-full mt-20 bg-white' ref={componentRef}>
           {children}
         </div>
       </div>
